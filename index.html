@@ -4,17 +4,78 @@
 <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/jquery.terminal/js/jquery.terminal.min.js"></script>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jquery.terminal/css/jquery.terminal.min.css"/>
+<style>
+    .terminal {
+        --size: 1.4;
+    /* --background: black; */
+    --color: rgba(85, 234, 167, 0.95);
+    border: 2px solid var(--color);
+    /* background: var(--background); */
+    /* width: 800px; */
+    height: 400px;
+    min-height: 100px;
+    min-width: 250px;
+    max-width: calc(100vw - 200px);
+    max-height: calc(100vh - 400px);
+    z-index: 100;
+    resize: both;
+    overflow: auto; 
+}
+
+
+</style>
 </head>
 <body>
-    <script>
-        $('body').terminal({
-            hello: function(what) {
-                this.echo('Hello, ' + what +
-                          '. Wellcome to this terminal.');
-            }
-        }, {
-            greetings: 'My First Web Terminal'
-        });
-        </script>
+
+        <h2>Welcome to my website...</h2>
+        <!-- <ul>
+            <li>hello-> needs another word to display the greeting message.</li>
+            <li>projects->displays the list of all my projects</li>
+            <li>education-> displays my educational background</li>
+        </ul> -->
+  
+    <div class = "terminal">
+        <template id="greetings">
+            _______  _______  ______    __   __  ___   __    _  _______  ___     
+           |       ||       ||    _ |  |  |_|  ||   | |  |  | ||   _   ||   |    
+           |_     _||    ___||   | ||  |       ||   | |   |_| ||  |_|  ||   |    
+             |   |  |   |___ |   |_||_ |       ||   | |       ||       ||   |    
+             |   |  |    ___||    __  ||       ||   | |  _    ||       ||   |___ 
+             |   |  |   |___ |   |  | || ||_|| ||   | | | |   ||   _   ||       |
+             |___|  |_______||___|  |_||_|   |_||___| |_|  |__||__| |__||_______|
+           </template>
+        <script>
+            $('div').terminal({
+                help: function() {
+                    this.echo('Hello, ' +
+                              'available commands are:-> cd ls cat');
+                },
+                projects: function() {
+                   this.echo('Intern at Wipro Limited. Worked primarily on Java and Springboot application. Also underwent a training for Google Cloud.');
+                },
+                education: function() {
+                    this.echo('2022-Completed B.Tech in Computer Science and Engineering from Aliah University, Kolkata, India.Overall GPA- 8.37/10'); 
+                    this.echo('2020- Completed 3 Milestones in #GoogleCloudReady Facilitator Program, which includes 13 quests in Qwiklabs and 8 Skill Badges.');
+                },
+                ls: function(){
+                    this.echo('projects  education  hobbies');
+                },
+                cd: function(what){
+                    this.echo('use cat to view details about '+what);
+
+                },
+                cat: function(what){
+                    if(what=="projects"){ projects();}
+                    if(what=="education"){education();}
+                },
+
+            }, {
+                greetings: greetings.innerHTML
+            });
+            </script>
+        
+    </div>
+   
+   
 </body>
 </html>
